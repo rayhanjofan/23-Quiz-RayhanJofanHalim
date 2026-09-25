@@ -15,12 +15,16 @@ package id.ac.polinema.oop;
  */
 public class Menu {
 
+    private int capacity = 10;
+    private MenuItem[]  items;
+    private int itemCount;
     /**
      * Creates an empty menu: initialize the array with capacity 10
      * and the counter with 0.
      */
     public Menu() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        this.items = new MenuItem[capacity];
+        this.itemCount = 0;
     }
 
     /**
@@ -30,9 +34,12 @@ public class Menu {
      * @param item the menu item to add
      */
     public void addMenuItem(MenuItem item) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (itemCount > items.length){
+            return;
+        }
+        items[itemCount] = item;
+        itemCount++;
     }
-
     /**
      * Searches the stored items by exact name.
      *
@@ -40,10 +47,15 @@ public class Menu {
      * @return the matching MenuItem, or {@code null} when not found
      */
     public MenuItem findItem(String name) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        for (int i = 0; i < itemCount; i++){
+            if (items[i].getName().equals(name)){
+                return items[i];
+            }
+        }
+        return null;
     }
 
     public int getItemCount() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return itemCount;
     }
 }
